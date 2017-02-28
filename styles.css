@@ -1,0 +1,64 @@
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 98vh;
+  color: white;
+}
+
+body * {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.demo-stats-wrapper {
+  border: 1px solid white;
+  flex: 1;
+}
+
+.el-stats-wrapper {
+  border: 1px solid white;
+  flex: 1;
+}
+
+.game-options-wrapper {
+  border: 1px solid white;
+  flex: 1
+}
+
+.game-upper-panel {
+  border: 1px solid white;
+  flex: 2;
+  justify-content: space-around;
+}
+
+.game-wrapper {
+  border: 1px solid white;
+  flex: 2;
+}
+
+.page-wrapper {
+  height: 100%;
+}
+
+.picture-wrapper {
+  flex: 1;
+}
+
+.stats-wrapper {
+  border: 1px solid white;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.text-log-wrapper {
+  flex: 1;
+  background: url(http://www.myfreetextures.com/wp-content/uploads/2011/06/grungy-rough-old-worn-parchment-paper.jpg);
+}

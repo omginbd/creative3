@@ -9,7 +9,9 @@
     <div class="page-wrapper row">
       <div class="game-wrapper">
         <div class="game-upper-panel row">
-          <div class="text-log-wrapper">Text log here</div>
+          <div class="text-log-wrapper">
+            Text log here
+          </div>
           <div class="picture-wrapper">Fight pictures here</div>
         </div>
         <div class="game-options-wrapper">
@@ -18,22 +20,16 @@
       </div>
       <div class="stats-wrapper">
         <div class="demo-stats-wrapper">
-          demo stats
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
+          Demogorgan:
+          <div ng-repeat="(key, value) in demogorgan.stats">
+            <statbar stat=value />
+          </div>
         </div>
         <div class="el-stats-wrapper">
-          11 stats
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
-          <p>a</p>
+          Eleven:
+          <div ng-repeat="(key, value) in eleven.stats">
+            <statbar stat=value />
+          </div>
         </div>
       </div>
     </div>

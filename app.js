@@ -3,6 +3,7 @@ var ATTACK_TYPES = {
   PUNCH: 'PUNCH',
   RAGE: 'RAGE',
   TRUCK: 'TRUCK',
+  EGGO: 'EGGO',
   HAUNT: 'HAUNT',
   CONSUME: 'CONSUME'
 }
@@ -10,6 +11,7 @@ var ATTACK_TYPES = {
 angular.module('StrangerThings', [])
   .controller('MyController', ['$scope', GameController])
   .directive('statbar', statbarDirective)
+  .directive('optionsmenu', optionsMenuDirective)
 
 function GameController($scope) {
   $scope.textLog = []
@@ -29,17 +31,24 @@ function GameController($scope) {
         name: 'Stamina',
         max: 100,
         cur: 100
+      },
+      waffles: {
+        name: 'Eggos',
+        max: 3,
+        cur: 3
       }
     },
     attackDamage: 10,
     spells: [
       {
         name: 'Rage',
-        damage: 100
+        damage: 100,
+        key: ATTACK_TYPES.RAGE
       },
       {
         name: 'Throw Truck',
-        damage: 50
+        damage: 50,
+        key: ATTACK_TYPES.TRUCK
       }
     ]
   }
@@ -73,6 +82,7 @@ function GameController($scope) {
       }
     ]
   }
+  $scope.doAttack = _.partialRight(doAttack, $scope.eleven, $scope.demogorgan)
 }
 
 function statbarDirective() {
@@ -93,6 +103,25 @@ function statbarDirective() {
   }
 }
 
+function optionsMenuDirective() {
+  return {
+    restrict: 'E',
+    replace: 'true',
+    template: (
+      `<div class="options-menu">
+        <div ng-click="doAttack('PUNCH')">Punch</div>
+        <div ng-click="magicOpen = !magicOpen">Magic</div>
+        <div class="magic-menu" ng-show="magicOpen">
+          <div class="spell-wrapper" ng-repeat="spell in eleven.spells">
+            <div ng-click="doAttack(spell.key)">{{spell.name}}</div>
+          </div>
+        </div>
+        <div ng-click="doAttack('EGGO')">Eat Eggo</div>
+      </div>`
+    )
+  }
+}
+
 /***
   * doAttack will get called when the user selects an option from the menu
   * attackType will be one of the members of the ATTACK_TYPE enum at the top of the file
@@ -104,6 +133,8 @@ function doAttack(attackType, eleven, demogorgan) {
   // Do magic math things here
   // I suppose this could update the attack log as well, but that's your call
   // Just return the updated stats, they'll be merged into the whole object
+  console.log(attackType)
+
   return {
     demogorgan: {
       hp: 0,

@@ -1,9 +1,14 @@
 body {
-  background-color: black;
+  background-color: grey;
   margin: 0;
   padding: 0;
   height: 98vh;
   color: white;
+  font-size: 48px;
+  font-weight: 900;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+
 }
 
 body * {
@@ -15,28 +20,32 @@ body * {
 }
 
 .demo-stats-wrapper {
-  border: 1px solid white;
   flex: 1;
+  border: 5px solid white;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(24,103,240,1) 100%);
 }
 
 .el-stats-wrapper {
-  border: 1px solid white;
   flex: 1;
+  border: 5px solid white;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(24,103,240,1) 100%);
 }
 
 .game-options-wrapper {
-  border: 1px solid white;
-  flex: 1
+  flex: 1;
+  border: 5px solid white;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(24,103,240,1) 100%);
 }
 
 .game-upper-panel {
-  border: 1px solid white;
   flex: 2;
   justify-content: space-around;
 }
 
 .game-wrapper {
-  border: 1px solid white;
   flex: 2;
 }
 
@@ -49,8 +58,21 @@ body * {
 }
 
 .stats-wrapper {
-  border: 1px solid white;
   flex: 1;
+}
+
+.wrapper {
+  padding: 6px;
+}
+
+.magic-menu {
+  position: relative;
+  width: 300px;
+  left: 165px;
+  top: -66px;
+  border: 5px solid white;
+  border-radius: 5px;
+
 }
 
 .row {

@@ -7,13 +7,19 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body ng-app="StrangerThings" ng-controller="MyController">
+    <audio src="audio.mp3" autoplay loop></audio>
+    <div ng-class="{parentDisable: win || lose}"></div>
     <div class="page-wrapper row">
       <div class="game-wrapper">
         <div class="game-upper-panel row">
           <div class="text-log-wrapper">
-            Text log here
+            <div class="text-log-entry" ng-repeat="entry in textLog track by $index">
+              {{entry}}
+            </div>
           </div>
-          <div class="picture-wrapper">Fight pictures here</div>
+          <div class="picture-wrapper">
+              <img src="fight.png" />
+          </div>
         </div>
         <div class="game-options-wrapper wrapper">
           <optionsmenu />
@@ -33,6 +39,12 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="game-result-modal" ng-show="!!win">
+      YOU WIN!
+    </div>
+    <div class="game-result-modal" ng-show="!!lose">
+      YOU LOSE!
     </div>
     <script src="app.js"></script>
   </body>

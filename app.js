@@ -131,7 +131,7 @@ function optionsMenuDirective() {
 function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
   switch (attackType) {
     case ATTACK_TYPES.PUNCH:
-      if (eleven.stats.stamina.cur > 50) {
+      if (eleven.stats.stamina.cur >= 25) {
         eleven.stats.stamina.cur = eleven.stats.stamina.cur - 25
         demogorgan.stats.hp.cur = demogorgan.stats.hp.cur - eleven.attackDamage
         textLog.unshift('Eleven used PUNCH for 50 damage!')
@@ -141,7 +141,7 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
     }
       break
     case ATTACK_TYPES.RAGE:
-      if (eleven.stats.mp.cur > 35) {
+      if (eleven.stats.mp.cur >= 35) {
         eleven.stats.mp.cur = eleven.stats.mp.cur - 35
         demogorgan.stats.hp.cur = demogorgan.stats.hp.cur - 200
         textLog.unshift('Eleven used RAGE for 200 damage!')
@@ -151,7 +151,7 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
       }
       break
     case ATTACK_TYPES.TRUCK:
-      if (eleven.stats.mp.cur > 20) {
+      if (eleven.stats.mp.cur >= 20) {
         eleven.stats.mp.cur = eleven.stats.mp.cur - 20
         demogorgan.stats.hp.cur = demogorgan.stats.hp.cur - 100
         textLog.unshift('Eleven used TRUCK for 100 damage!')
@@ -186,21 +186,21 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
   var attack = Math.floor(Math.random() * 100) % 3
   switch (attack) {
     case 0:
-      if (demogorgan.stats.stamina.cur > 200) {
+      if (demogorgan.stats.stamina.cur >= 200) {
         demogorgan.stats.stamina.cur -= 200
         eleven.stats.hp.cur -= 100
         textLog.unshift('Demogorgan used CHARGE for 100 damage!')
         break;
       }
     case 1:
-      if (demogorgan.stats.mp.cur > 200) {
+      if (demogorgan.stats.mp.cur >= 200) {
         demogorgan.stats.mp.cur -= 200
         eleven.stats.hp.cur -= 150
         textLog.unshift('Demogorgan cast HAUNT for 150 damage!')
         break;
       }
     case 2:
-      if (demogorgan.stats.mp.cur > 300) {
+      if (demogorgan.stats.mp.cur >= 300) {
         demogorgan.stats.mp.cur -= 300
         eleven.stats.hp.cur -= 100
         textLog.unshift('Demogorgan cast CONSUME for 100 damage!')

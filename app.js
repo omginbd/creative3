@@ -40,7 +40,7 @@ function GameController($scope) {
         cur: 3
       }
     },
-    attackDamage: 10,
+    attackDamage: 50,
     spells: [
       {
         name: 'Rage',
@@ -131,10 +131,10 @@ function optionsMenuDirective() {
 function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
   switch (attackType) {
     case ATTACK_TYPES.PUNCH:
-      if (eleven.stats.stamina.cur > 10) {
-        eleven.stats.stamina.cur = eleven.stats.stamina.cur - 10
+      if (eleven.stats.stamina.cur > 50) {
+        eleven.stats.stamina.cur = eleven.stats.stamina.cur - 25
         demogorgan.stats.hp.cur = demogorgan.stats.hp.cur - eleven.attackDamage
-        textLog.unshift('Eleven used PUNCH for 10 damage!')
+        textLog.unshift('Eleven used PUNCH for 50 damage!')
     } else {
         textLog.unshift('Not enough stamina! Use something else.')
         return
@@ -161,10 +161,14 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
       }
       break
     case ATTACK_TYPES.EGGO:
-      if (eleven.stats.waffles.cur > 1) {
+      if (eleven.stats.waffles.cur >= 1) {
         eleven.stats.waffles.cur = eleven.stats.waffles.cur - 1
-        eleven.stats.hp.cur = eleven.stats.hp.cur + 100
-        textLog.unshift('Eleven ate an Eggo Waffle, healing for 100 health!')
+		eleven.stats.hp.cur=eleven.stats.hp.max
+        /*eleven.stats.hp.cur = eleven.stats.hp.cur + 250
+        eleven.stats.mana.cur = eleven.stats.mana.cur + 15
+		if (eleven.stats.hp.cur > eleven.stats.hp.max)
+		{}*/
+        textLog.unshift('Eleven ate an Eggo Waffle, Eleven was Healed!')
       } else {
         textLog.unshift('No more waffles left!')
         return
@@ -178,7 +182,7 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
   }
 
   eleven.stats.mp.cur = ((eleven.stats.mp.cur + 15) > eleven.stats.mp.max) ? eleven.stats.mp.max : eleven.stats.mp.cur + 15
-  eleven.stats.stamina.cur = ((eleven.stats.stamina.cur + 15) > eleven.stats.stamina.max) ? eleven.stats.stamina.max : eleven.stats.stamina.cur + 15
+  eleven.stats.stamina.cur = ((eleven.stats.stamina.cur + 5) > eleven.stats.stamina.max) ? eleven.stats.stamina.max : eleven.stats.stamina.cur + 5
   var attack = Math.floor(Math.random() * 100) % 3
   switch (attack) {
     case 0:
@@ -192,7 +196,7 @@ function doAttack(attackType, eleven, demogorgan, textLog, $scope) {
       if (demogorgan.stats.mp.cur > 200) {
         demogorgan.stats.mp.cur -= 200
         eleven.stats.hp.cur -= 150
-        textLog.unshift('Demogorgan cast HAUNT for 30 damage!')
+        textLog.unshift('Demogorgan cast HAUNT for 150 damage!')
         break;
       }
     case 2:
